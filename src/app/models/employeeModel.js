@@ -98,34 +98,15 @@ module.exports = {
         }
     },
 
-    /* async sectorOptions(callback) {
+    async sectorOptions(callback) {
         await db.query(`SELECT name, id FROM sector;`, function(err, results){
             callback(results.rows)
-            console.log(results.rows)
         })
     },
 
     async positionOptions(callback) {
         await db.query(`SELECT name, id FROM position`, function(err, results){
-
             callback(results.rows)
-            console.log(results.rows)
         })
-    } */
-
-    async options (callback1, callback2) {
-        try {
-            await db.query(`SELECT name, id FROM sector;`, function(err, results){
-                callback1(results.rows)
-                console.log(results.rows)
-            })
-    
-            /* await db.query(`SELECT name, id FROM position`, function(err, results){
-                callback2(results.rows)
-                console.log(results.rows)
-            }) */
-        } catch (error) {
-            console.error(error);
-        }
     }
 }
