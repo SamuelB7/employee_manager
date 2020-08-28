@@ -1,0 +1,126 @@
+<div class="photo">
+    <div class="field">
+        <div>Foto</div>
+        <div>
+            <div id="photos-upload">
+                <input 
+                type="file"
+                id="photos-input"
+                name="photos"
+                accept="image/*"
+                >
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fields">
+
+    <div class="field">
+        <div>Nome Completo</div>
+        <div class="input">
+            <input 
+                type="text"
+                name="name"
+                placeholder="Digite o seu nome completo"
+                value="{{employee.name}}"
+                required
+            >
+        </div>
+    </div>
+
+    <div class="field">
+        <div>Email</div>
+        <div class="input">
+            <input 
+                type="email"
+                name="email"
+                placeholder="Digite o seu email"
+                value="{{employee.email}}"
+                required
+            >
+        </div>
+    </div>
+
+    <div class="field">
+        <div>Telefone</div>
+        <div class="input">
+            <input 
+                type="text"
+                name="tel"
+                placeholder="Digite o seu número de telefone"
+                value="{{employee.tel}}"
+                required
+            >
+        </div>
+    </div>
+
+    <div class="field">
+        <div>Data de Nascimento</div>
+        <div class="input">
+            <input 
+                type="date"
+                name="birth"
+                placeholder="Digite a sua data de nascimento"
+                value="{{employee.birth}}"
+                required
+            >
+        </div>
+    </div>
+
+    <div class="field">
+        <div>CPF</div>
+        <div class="input">
+            <input 
+                type="text"
+                name="cpf"
+                placeholder="Digite o seu CPF"
+                value="{{employee.cpf}}"
+                required
+            >
+        </div>
+    </div>
+
+    <div class="field">
+        <div>Endereço</div>
+        <div class="input">
+            <input 
+                type="text"
+                name="address"
+                placeholder="Digite o seu endereço"
+                value="{{employee.address}}"
+                required
+            >
+        </div>
+    </div>
+
+    <div class="field">
+        <div>Setor</div>
+        <div>
+            <select name="sector">
+                {% for sector in sectorsOptions %}
+                    <option value="{{sector.id}}" {% if employee.sector_id == sector.id %}selected{%endif%}
+                        >{{sector.name}}
+                    </option>
+                {%endfor%}
+            </select>
+        </div>
+    </div>
+
+    <div class="field">
+        <div>Cargo</div>
+        <div>
+            <select name="position">
+                {% for position in positionsOptions %}
+                    <option value="{{position.id}}" {% if employee.position_id == position.id %}selected{%endif%}
+                        >{{position.name}}
+                    </option>
+                {%endfor%}
+            </select>
+        </div>
+    </div>
+
+</div>
+
+
+<button class='submit_button' type="submit">Salvar</button>
