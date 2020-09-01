@@ -1,4 +1,4 @@
-<div class="photo">
+<div class="employee-photo">
     <div class="field">
         <div>Foto</div>
         <div>
@@ -8,7 +8,13 @@
                 id="photos-input"
                 name="photos"
                 accept="image/*"
-                >
+                onchange="PhotosUpload.handleFileInput(event)"
+            >
+            <p>Selecione uma foto</p>
+            </div>
+
+            <div id="photos-preview">
+                
             </div>
         </div>
     </div>

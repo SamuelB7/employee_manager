@@ -48,9 +48,13 @@ module.exports = {
     },
 
     async findOne(id, callback) {
-        await db.query(`SELECT * FROM employee WHERE id = $1`, [id], function(results){
-            callback(results.rows[0])
-        })
+        try {
+            await db.query(`SELECT * FROM employee WHERE id = $1`, [id], function(err, results){
+                callback(results.rows[0])
+            })
+        } catch (error) {
+            console.error(error);
+        }
     },
 
     async update(data, callback) {

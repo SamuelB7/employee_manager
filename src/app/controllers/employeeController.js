@@ -12,5 +12,19 @@ module.exports = {
         } catch (error) {
             console.error(error);
         }
-    } 
+    },
+
+    async post(req, res){
+        const keys = Object.keys(req.body) 
+
+        for(key of keys) {
+            if (req.body[key] =='') {
+                return res.send('Please, fill all fields')
+            }
+        }
+
+        Employee.create(req.body, function(employee){
+            return res.send('Funcionário cadastrado')
+        })
+    }
 }

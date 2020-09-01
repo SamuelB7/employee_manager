@@ -8,5 +8,7 @@ routes.get('/', function(req, res){
 })
 
 routes.get('/create', employee.create)
+routes.post('/employee', employee.post)
+/* routes.get('/create/:id', employee.show) */
 
 module.exports = routes
