@@ -112,12 +112,12 @@ form .field #photos-input {
     left: 0;
     background: rgba(255, 255, 255, 0.8);
 
-    margin-left: 25%;
-
     color: red;
 
     width: 50%;
-    height: 99%;
+    height: 100%;
+
+    margin-left: 25%;
 
     display: flex;
     align-items: center;

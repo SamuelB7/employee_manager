@@ -1,6 +1,6 @@
-/* const PhotosUpload = {
+const PhotosUpload = {
     preview: document.querySelector('#photos-preview'),
-    uploadLimit: 6,
+    uploadLimit: 7,
     handleFileInput(event) {
         const {files: fileList } = event.target
 
@@ -39,7 +39,7 @@
         const { files: fileList } = event.target
 
         if(fileList.length > uploadLimit) {
-            alert("Envie apenas uma foto")
+            alert("Não ultrapasse o limite de fotos")
             event.preventDefault()
             return true
         }
@@ -53,11 +53,12 @@
         button.innerHTML = "close"
         return button
     }
-} */
+}
 
 
 //Antes da refatoração
-const PhotosUpload = {
+/* const PhotosUpload = {
+    preview: document.querySelector('#photos-preview'),
     uploadLimit: 1,
     handleFileInput(event) {
         const {files: fileList } = event.target
@@ -79,7 +80,7 @@ const PhotosUpload = {
                 const div = document.createElement('div')
                 div.classList.add('photo')  
 
-                div.onclick = () => alert('remover foto')
+                div.onclick = PhotosUpload.removePhoto
 
                 div.appendChild(image)
                 div.appendChild(PhotosUpload.getRemoveButton())
@@ -96,5 +97,11 @@ const PhotosUpload = {
         button.classList.add('material-icons')
         button.innerHTML = "close"
         return button
+    },
+    
+    removePhoto(event) {
+        const event = event.target
+        const photoDiv = document.querySelector('#photo')
+        photoDiv.remove()
     }
-}
+} */
