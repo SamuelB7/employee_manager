@@ -16,7 +16,14 @@
             </div>
 
             <div id="photos-preview">
-                
+                {% if files%}
+                    <div class="photo" id="{{image.id}}">
+                        <img src="{{image.src}}" alt="{{image.name}}">
+                        <i class="material-icons"
+                            
+                        >close</i>
+                    </div>
+                {% endif%}
             </div>
         </div>
     </div>

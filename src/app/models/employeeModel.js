@@ -84,7 +84,7 @@ module.exports = {
                 data.id
             ]
 
-            await db.query(query, values, function(results){
+            await db.query(query, values, function(err, results){
                 callback()
             })
         } catch (error) {
