@@ -2,7 +2,7 @@ const db = require('../../db')
 const { create } = require('../controllers/employeeController')
 
 module.exports = {
-    async create(data, callback) {
+    create(data) {
         try {
             const query = `
             INSERT INTO employee (
@@ -29,35 +29,30 @@ module.exports = {
                 data.position
             ]
 
-            await db.query(query, values, function(results){
-                callback(results.rows[0])
-            })
+            return db.query(query, values)
+
         } catch (error) {
             console.error(error);
         }
     },
 
-    async findAll(callback) {
+    findAll() {
         try {
-            await db.query(`SELECT * FROM employee`, function(results){
-                callback(results.rows)
-            })
+            return db.query(`SELECT * FROM employee`)
         } catch (error) {
             console.error(error);
         }
     },
 
-    async findOne(id, callback) {
+    findOne(id) {
         try {
-            await db.query(`SELECT * FROM employee WHERE id = $1`, [id], function(err, results){
-                callback(results.rows[0])
-            })
+            return db.query(`SELECT * FROM employee WHERE id = $1`, [id])
         } catch (error) {
             console.error(error);
         }
     },
 
-    async update(data, callback) {
+    update(data) {
         try {
             const query = `
             UPDATE employee SET
@@ -84,19 +79,15 @@ module.exports = {
                 data.id
             ]
 
-            await db.query(query, values, function(err, results){
-                callback()
-            })
+            return db.query(query, values)
         } catch (error) {
             console.error(error);
         }
     },
 
-    async delete(id, callback) {
+    delete(id) {
         try {
-            await db.query(`DELETE FROM employee WHERE id = $1`, [id], function(results){
-                return callback()
-            })
+            return db.query(`DELETE FROM employee WHERE id = $1`, [id])
         } catch (error) {
             console.error(error);
         }

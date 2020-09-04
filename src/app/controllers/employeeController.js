@@ -15,52 +15,80 @@ module.exports = {
     },
 
     async post(req, res){
-        const keys = Object.keys(req.body) 
+        try {
+            const keys = Object.keys(req.body) 
 
-        for(key of keys) {
-            if (req.body[key] =='') {
-                return res.send('Please, fill all fields')
+            for(key of keys) {
+                if (req.body[key] =='') {
+                    return res.send('Please, fill all fields')
+                }
             }
-        }
 
-        await Employee.create(req.body, function(employee){
-            return res.send('Funcionário cadastrado')
-        })
+            if (req.files.length == 0) {
+                return res.send('Plase, send one image')
+            }
+
+            let results = await Employee.create(req.body)
+            let employeeId = results.rows[0].id
+
+            return res.redirect(`/employee/${employeeId}`)
+                
+        } catch (error) {
+            console.error(error);
+        }
     },
 
     async show(req, res) {
-        await Employee.findOne(req.params.id, function(employee){
+        try {
+            let results = await Employee.findOne(req.params.id)
+            let employee = results.rows[0]
+
             if(!employee) return res.send('Employee not found')
 
-            return res.render('show', {employee})
-        })
+            return res.render(`/employee/${employee}`)
+        } catch (error) {
+            console.error(error);
+        }
     },
 
     async edit(req, res) {
-        await Employee.findOne(req.params.id, function(employee){
-            if(!employee) return res.send('Employee not found')
-
-            return res.render('edit', {employee})
-        })
+        try {
+            let results = await Employee.findOne(req.params.id) 
+            let employee = results.rows[0]
+            
+            return res.render(`/employee/${employee}/edit`)
+                
+        } catch (error) {
+            console.error(error)
+        }
     },
 
     async put(req, res) {
-        const keys = Object.keys(req.body) 
+        try {
+            const keys = Object.keys(req.body) 
 
-        for(key of keys) {
-            if (req.body[key] =='') {
-                return res.send('Please, fill all fields')
+            for(key of keys) {
+                if (req.body[key] =='') {
+                    return res.send('Please, fill all fields')
+                }
             }
-        }
 
-        await Employee.update(req.body, function(){
+            await Employee.update(req.body)
+
             res.redirect(`/employee/${req.body.id}`)
-        })
+
+        } catch (error) {
+            console.error(error);
+        }
     },
 
     async delete(req, res) {
-        await Employee.delete(req.body.id, function(){
+        try {
+            await Employee.delete(req.body.id)
+            
             return res.redirect('/')
-        })
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
