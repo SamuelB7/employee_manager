@@ -14,7 +14,7 @@ routes.get('/employee/:id', employee.show)
 routes.get('/employee/:id/edit', employee.edit)
 
 routes.post('/employee', multer.array("photos", 1), employee.post)
-routes.put('/employee', multer.array("photos", 1),employee.put) 
+routes.put('/employee', multer.array("photos", 1), employee.put) 
 routes.delete('/employee', employee.delete)
 
 module.exports = routes

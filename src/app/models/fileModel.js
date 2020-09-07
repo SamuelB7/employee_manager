@@ -2,7 +2,7 @@ const db = require('../../db')
 const fs = require('fs')
 
 module.exports = {
-    create({filename, path, product_id}) {
+    create({filename, path, employee_id}) {
         const query = `
             INSERT INTO photos (
                 name,
@@ -14,9 +14,9 @@ module.exports = {
         const values = [
             filename,
             path,
-            product_id
+            employee_id
         ]
 
-        return db.query(query, values)
+        return db.query(query, values) 
     }
 }

@@ -25,7 +25,7 @@ module.exports = {
                 data.birth,
                 data.cpf,
                 data.address,
-                data.sector_id,
+                data.sector,
                 data.position
             ]
 
@@ -64,7 +64,7 @@ module.exports = {
                 address=($6),
                 sector_id=($7),
                 position_id=($8)
-            WHERE id = $10
+            WHERE id = $9
             `
 
             const values = [
@@ -75,7 +75,7 @@ module.exports = {
                 data.cpf,
                 data.address,
                 data.sector_id,
-                data.position,
+                data.position_id,
                 data.id
             ]
 
@@ -93,14 +93,14 @@ module.exports = {
         }
     },
 
-    async sectorOptions(callback) {
-        await db.query(`SELECT name, id FROM sector;`, function(err, results){
+    sectorOptions(callback) {
+        db.query(`SELECT name, id FROM sector;`, function(err, results){
             callback(results.rows)
         })
     },
 
-    async positionOptions(callback) {
-        await db.query(`SELECT name, id FROM position`, function(err, results){
+    positionOptions(callback) {
+        db.query(`SELECT name, id FROM position`, function(err, results){
             callback(results.rows)
         })
     }

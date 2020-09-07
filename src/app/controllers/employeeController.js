@@ -1,4 +1,5 @@
 const Employee = require('../models/employeeModel')
+const File = require('../models/fileModel')
 
 
 module.exports = {
@@ -31,7 +32,12 @@ module.exports = {
             let results = await Employee.create(req.body)
             let employeeId = results.rows[0].id
 
-            return res.redirect(`/employee/${employeeId}`)
+            const filesPromise = req.files.map(file => File.create({...file,employee_id: employeeId}))
+            await Promise.all(filesPromise)
+
+            return res.send('Funcionário cadastrado!')
+
+            //return res.redirect(`/employee/${employeeId}`)
                 
         } catch (error) {
             console.error(error);
@@ -85,7 +91,7 @@ module.exports = {
     async delete(req, res) {
         try {
             await Employee.delete(req.body.id)
-            
+
             return res.redirect('/')
         } catch (error) {
             console.error(error);
