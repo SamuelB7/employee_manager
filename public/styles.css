@@ -135,124 +135,23 @@ form .field #photos-input {
     opacity: 1;
 }
 
-
-
-
-
-
-
-
-/* * {
-
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    font-family: 'Roboto';
+h3 {
+    margin: 10px 70px; 
 }
 
-header {
-    border: solid black;
-    border-radius: 10px;
-    margin: 0 70px;
-    padding: 30px;
-    width: auto;
-    height: 100%;
-    background: darkgray;
-    text-align: center;
-    font-size: 30px;
-}
-
-h1 {
-    text-align: center;
-    margin-top: 5px;
-}
-
-.form {
-    background: darkgray;
-    text-align: center;
+.show {
     margin: 10px 70px;
-
-    border-radius: 10px;
-    border: solid black;
-
     display: grid;
-    grid-template-columns: 1fr 1fr;
-
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-.form input {
-    width: 60%;
+.details {
+    margin: 10px 0px;
 }
 
-.employee-photo img {
-    width: 300px; 
-    height: 300px;
-    margin-top: 10px;
-}
 
-.fields {
-text-align: left;
-margin-left: 20px;
-}
 
-.submit_button {
-    width: 50%;
 
-    margin-left: 25%;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
 
-#photos-upload {
-    position: relative;
 
-    display: block;
-    overflow: hidden;
-    
-    width: 70%;
-    margin: 0px 17%;
-}
 
-#photos-upload p {
-    
-    border-radius: 4px;
-    background-color: blanchedalmond;
-    color: black;
-    padding: 8px 16px;
-    text-align: center;
-
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-form .field #photos-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    display: block;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-
-    cursor: pointer;
-}
-
-#photos-preview{ 
-    
-    margin: 8px 8px;
-}
-
-#photos-preview img {
-    position: relative;
-    width: 300px;
-    height: 300px;
-}
-
-#photos-preview .material-icons {
-    position: absolute;
-    cursor: pointer;
-    
-}
- */

@@ -1,5 +1,5 @@
 const db = require('../../db')
-const { create } = require('../controllers/employeeController')
+
 
 module.exports = {
     create(data) {

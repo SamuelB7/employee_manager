@@ -51,7 +51,7 @@ module.exports = {
 
             if(!employee) return res.send('Employee not found')
 
-            return res.render(`/employee/${employee}`)
+            return res.render(`show`, {employee})
         } catch (error) {
             console.error(error);
         }
