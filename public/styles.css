@@ -3,6 +3,7 @@
     padding: 0;
     text-decoration: none;
     font-family: 'Roboto';
+    color: black;
 }
 
 header {
@@ -140,7 +141,14 @@ h3 {
 }
 
 .show {
+    background: darkgray;
     margin: 10px 70px;
+
+    text-align: center;
+
+    border-radius: 10px;
+    border: solid black;
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -155,6 +163,33 @@ h3 {
     border: solid 1px black;
     
 }
+
+.details h3 {
+    margin: 10px 0px;
+}
+
+button {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 120px;
+    
+    width: 200px;
+}
+
+.submit_button {
+    font-weight: bold;
+}
+
+#form-delete {
+    margin: -73px 45%;
+}
+
+#form-delete button {
+    color: red;
+    font-weight: bold;
+}
+
 
 
 

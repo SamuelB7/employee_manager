@@ -6,51 +6,53 @@
 <div class="show">
 
     <div class="details">
-        <div>Foto</div>
+        <h3>Foto</h3>
         <div>
             <img src="{{photoSrc}}" alt="{{photo.name}}" >
         </div>
     </div>
 
     <div class="details">
-        <div>Nome</div>
+        <h3>Nome</h3>
         <div>{{employee.name}}</div>
     </div>
 
     <div class="details">
-        <div>Email</div>
+        <h3>Email</h3>
         <div>{{employee.email}}</div>
     </div>
 
     <div class="details">
-        <div>Telefone</div>
+        <h3>Telefone</h3>
         <div>{{employee.tel}}</div>
     </div>
 
     <div class="details">
-        <div>Data de Nascimento</div>
+        <h3>Data de nascimento</h3>
         <div>{{employee.birth}}</div>
     </div>
 
     <div class="details">
-        <div>CPF</div>
+        <h3>CPF</h3>
         <div>{{employee.cpf}}</div>
     </div>
 
     <div class="details">
-        <div>Endereço</div>
+        <h3>Endereço</h3>
         <div>{{employee.address}}</div>
     </div>
 
     <div class="details">
-        <div>Setor</div>
+        <h3>Setor</h3>
         <div>{{employee.sector_id}}</div>
     </div>
 
     <div class="details">
-        <div>Cargo</div>
+        <h3>Cargo</h3>
         <div>{{employee.position_id}}</div>
     </div>
+
+    <button><a href="/employee/{{employee.id}}/edit">EDITAR</a></button>
 </div>
 
 {% endblock %} 
