@@ -17,9 +17,9 @@
             </div>
 
             <div id="photos-preview">
-                {% if files%}
-                    <div class="photo" id="{{image.id}}">
-                        <img src="{{image.src}}" alt="{{image.name}}">
+                {% if photo %}
+                    <div class="photo" id="{{photo.id}}">
+                        <img src="{{photoSrc}}" alt="{{photo.name}}">
                         <i class="material-icons"
                             
                         >close</i>

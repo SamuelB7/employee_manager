@@ -149,6 +149,13 @@ h3 {
     margin: 10px 0px;
 }
 
+.details img {
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+    
+}
+
 
 
 

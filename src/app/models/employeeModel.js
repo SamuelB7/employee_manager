@@ -103,5 +103,11 @@ module.exports = {
         db.query(`SELECT name, id FROM position`, function(err, results){
             callback(results.rows)
         })
+    },
+
+    findPhotos(id) {
+        return db.query(`
+            SELECT * FROM photos WHERE employee_id = $1
+        `, [id])
     }
 }

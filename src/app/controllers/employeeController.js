@@ -51,7 +51,11 @@ module.exports = {
 
             if(!employee) return res.send('Employee not found')
 
-            return res.render(`show`, {employee})
+            results = await Employee.findPhotos(req.params.id)
+            let photo = results.rows[0]
+            photoSrc = `${req.protocol}://${req.headers.host}${photo.path.replace("public", "")}`
+
+            return res.render(`show`, {employee, photo, photoSrc})
         } catch (error) {
             console.error(error);
         }
@@ -61,8 +65,16 @@ module.exports = {
         try {
             let results = await Employee.findOne(req.params.id) 
             let employee = results.rows[0]
-            
-            return res.render(`/employee/${employee}/edit`)
+
+            results = await Employee.findPhotos(req.params.id)
+            let photo = results.rows[0]
+            photoSrc = `${req.protocol}://${req.headers.host}${photo.path.replace("public", "")}`
+
+            await Employee.sectorOptions(function(options1){
+                Employee.positionOptions(function(options2){
+                    res.render('edit', {employee, photo, photoSrc, sectorsOptions:options1, positionsOptions:options2})
+                })
+            })
                 
         } catch (error) {
             console.error(error)
