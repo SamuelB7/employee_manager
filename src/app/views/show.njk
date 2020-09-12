@@ -44,12 +44,27 @@
 
     <div class="details">
         <h3>Setor</h3>
-        <div>{{employee.sector_id}}</div>
+        <div>
+            {% if employee.sector_id == 1 %} Financeiro {%endif%} 
+            {% if employee.sector_id == 2 %} Recursos Humanos {%endif%}
+            {% if employee.sector_id == 3 %} Vendas {%endif%} 
+            {% if employee.sector_id == 4 %} Tecnologia da Informação {%endif%}  
+        </div>
     </div>
 
     <div class="details">
         <h3>Cargo</h3>
-        <div>{{employee.position_id}}</div>
+        <div>
+            {% if employee.position_id == 1 %} Presidente {%endif%}
+            {% if employee.position_id == 2 %} Diretor {%endif%}
+            {% if employee.position_id == 3 %} Gerente {%endif%}
+            {% if employee.position_id == 4 %} Lider {%endif%}
+            {% if employee.position_id == 5 %} Analista Sr. {%endif%}
+            {% if employee.position_id == 6 %} Analista Pl. {%endif%}
+            {% if employee.position_id == 7 %} Analista Jr. {%endif%}
+            {% if employee.position_id == 8 %} Estagiário {%endif%}
+            {% if employee.position_id == 9 %} Aprendiz {%endif%}
+        </div>
     </div>
 
     <button><a href="/employee/{{employee.id}}/edit">EDITAR</a></button>

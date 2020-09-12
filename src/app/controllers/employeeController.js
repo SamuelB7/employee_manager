@@ -1,5 +1,6 @@
 const Employee = require('../models/employeeModel')
 const File = require('../models/fileModel')
+const {date} = require('../../../utils')
 
 
 module.exports = {
@@ -35,9 +36,7 @@ module.exports = {
             const filesPromise = req.files.map(file => File.create({...file,employee_id: employeeId}))
             await Promise.all(filesPromise)
 
-            return res.send('Funcionário cadastrado!')
-
-            //return res.redirect(`/employee/${employeeId}`)
+            return res.redirect(`/employee/${employeeId}`)
                 
         } catch (error) {
             console.error(error);
@@ -50,6 +49,8 @@ module.exports = {
             let employee = results.rows[0]
 
             if(!employee) return res.send('Employee not found')
+
+            employee.birth = date(employee.birth).format
 
             results = await Employee.findPhotos(req.params.id)
             let photo = results.rows[0]
@@ -65,6 +66,8 @@ module.exports = {
         try {
             let results = await Employee.findOne(req.params.id) 
             let employee = results.rows[0]
+
+            employee.birth = date(employee.birth).iso
 
             results = await Employee.findPhotos(req.params.id)
             let photo = results.rows[0]

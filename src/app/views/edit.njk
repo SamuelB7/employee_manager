@@ -6,9 +6,10 @@
 
     <div class="form">
         {%include 'fields.njk'%}
+        <input type="hidden" name="id" value={{employee.id}}>
     </div>
 
-    <input type="hidden" name="id" value={{employee.id}}>
+    
 </form>
 
 <form id="form-delete" action="/employee?_method=DELETE" method="POST">

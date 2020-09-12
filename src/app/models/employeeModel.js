@@ -74,8 +74,8 @@ module.exports = {
                 data.birth,
                 data.cpf,
                 data.address,
-                data.sector_id,
-                data.position_id,
+                data.sector,
+                data.position,
                 data.id
             ]
 
