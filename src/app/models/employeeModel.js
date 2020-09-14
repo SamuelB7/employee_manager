@@ -1,4 +1,5 @@
 const db = require('../../db')
+const fs = require('fs')
 
 
 module.exports = {
@@ -85,8 +86,14 @@ module.exports = {
         }
     },
 
-    delete(id) {
+    async delete(id) {
         try {
+
+            const result = await db.query(`SELECT * FROM photos WHERE employee_id = $1`, [id])
+            const photo = result.rows[0]
+
+            fs.unlinkSync(photo.path)
+
             return db.query(`DELETE FROM employee WHERE id = $1`, [id])
         } catch (error) {
             console.error(error);

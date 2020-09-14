@@ -1,3 +1,5 @@
+//For some reason, the scripts.js is not working outside of HTML
+
 const PhotosUpload = {
     input: "",
     preview: document.querySelector('#photos-preview'),
@@ -80,61 +82,26 @@ const PhotosUpload = {
 
     removePhoto(event) {
         const photoDiv = event.target.parentNode
+        const photosArray = Array.from(PhotosUpload.preview.children)
+        const index = photosArray.indexOf(photoDiv)
         
+        PhotosUpload.files.splice(index, 1)
+        PhotosUpload.input.files = PhotosUpload.getAllFiles()
+
         photoDiv.remove()
         
+    },
+
+    removeOldPhoto(event) {
+        const photoDiv = event.target.parentNode
+
+        if(photoDiv.id){
+            const removedPhotos = document.querySelector('input[name="removed_photo"]')
+            if(removedPhotos) {
+                removedPhotos.value += `${photoDiv.id}`
+            }
+        }
+
+        photoDiv.remove()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* const PhotosUpload = {
-    photoPreview () {
-        let photo = document.querySelector('input[name=photos]').files[0];
-        let preview = document.querySelector('#photos-preview img')
-    
-        let reader = new FileReader();
-        
-        reader.onloadend = function() {
-            preview.src = reader.result
-
-        }
-    
-        reader.readAsDataURL(photo)
-    
-    },
-
-    removePhoto() {
-        photo = document.querySelector('#photos-preview img')
-        
-
-        img = document.createElement('img')
-        photo.replaceWith(img)
-        
-    },
-
-    getRemoveButton() {
-        const button = document.createElement('i')
-        button.classList.add('material-icons')
-        button.innerHTML = "close"
-        return button
-    },
-
-}
-
- */

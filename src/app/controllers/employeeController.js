@@ -89,10 +89,16 @@ module.exports = {
             const keys = Object.keys(req.body) 
 
             for(key of keys) {
-                if (req.body[key] =='') {
+                if (req.body[key] =="" && key != "removed_photo") {
                     return res.send('Please, fill all fields')
                 }
             }
+
+            const newFilesPromise = req.files.map(file => File.create({...file,employee_id: req.body.id}))
+            await Promise.all(newFilesPromise)
+
+            const removedPhoto = req.body.removed_photo
+            await File.delete(removedPhoto)
 
             await Employee.update(req.body)
 

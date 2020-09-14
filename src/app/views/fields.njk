@@ -1,8 +1,8 @@
-<script src="scripts.js"></script>
+
 <div class="employee-photo">
     <div class="field">
         <div>Foto</div>
-        <div>
+        
             <div id="photos-upload">
                 <input 
                 type="file"
@@ -11,7 +11,7 @@
                 name="photos"
                 accept="image/*"
                 onchange="PhotosUpload.handleFileInput(event)"
-            >
+                >
                 <p>Selecione uma foto</p>
             
             </div>
@@ -21,12 +21,13 @@
                     <div class="photo" id="{{photo.id}}">
                         <img src="{{photoSrc}}" alt="{{photo.name}}">
                         <i class="material-icons"
-                            
+                            onclick="PhotosUpload.removeOldPhoto(event)"
                         >close</i>
                     </div>
+                    <input type="hidden" name="removed_photo">
                 {% endif%}
             </div>
-        </div>
+        
     </div>
 </div>
 
@@ -140,3 +141,110 @@
 
 
 <button class='submit_button' type="submit">Salvar</button>
+
+
+<script>
+
+    const PhotosUpload = {
+    input: "",
+    preview: document.querySelector('#photos-preview'),
+    uploadLimit: 1,
+    files: [],
+    handleFileInput(event) {
+        const {files: fileList } = event.target
+        PhotosUpload.input = event.target
+
+        if(PhotosUpload.hasLimit(event)) return
+
+        Array.from(fileList).forEach(file => {
+
+            PhotosUpload.files.push(file)
+
+            const reader = new FileReader()
+
+            reader.onload = () => {
+                const image = new Image()
+                image.src = String(reader.result)
+
+                const div = PhotosUpload.getContainer(image)
+                document.querySelector('#photos-preview').appendChild(div)
+            }
+
+            reader.readAsDataURL(file)
+        })
+
+        PhotosUpload.input.files = PhotosUpload.getAllFiles()
+    },
+
+    getContainer(image) {
+        const div = document.createElement('div')
+        div.classList.add('photo')  
+
+        div.onclick = PhotosUpload.removePhoto
+
+        div.appendChild(image)
+
+        div.appendChild(PhotosUpload.getRemoveButton())
+
+        return div
+    },
+
+    hasLimit(event) {
+        const { uploadLimit, input } = PhotosUpload
+        const {files: fileList } = input
+
+        const preview = document.querySelector('#photos-preview')
+
+        if(fileList.length > uploadLimit) {
+            alert("Envie apenas uma foto")
+            event.preventDefault()
+            return true
+        }
+        
+        
+
+        return false
+    },
+
+    getAllFiles() {
+        const dataTransfer = new DataTransfer()
+
+        PhotosUpload.files.forEach(file => dataTransfer.items.add(file))
+
+        return dataTransfer.files
+    },
+
+    getRemoveButton() {
+        const button = document.createElement('i')
+        button.classList.add('material-icons')
+        button.innerHTML = "close"
+        return button
+    },
+
+    removePhoto(event) {
+        const photoDiv = event.target.parentNode
+        const photosArray = Array.from(PhotosUpload.preview.children)
+        const index = photosArray.indexOf(photoDiv)
+        
+        PhotosUpload.files.splice(index, 1)
+        PhotosUpload.input.files = PhotosUpload.getAllFiles()
+
+        photoDiv.remove()
+        
+    },
+
+    removeOldPhoto(event) {
+        const photoDiv = event.target.parentNode
+
+        if(photoDiv.id){
+            const removedPhotos = document.querySelector('input[name="removed_photo"]')
+            if(removedPhotos) {
+                removedPhotos.value += `${photoDiv.id}`
+            }
+        }
+
+        photoDiv.remove()
+    }
+}
+
+</script>
