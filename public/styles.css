@@ -196,9 +196,30 @@ button {
     background-color: black;
     border-radius: 4px;
     margin: 20px 70px;
-    width: 100%;
+    width: 18%;
     font-size: 16px;
     color: white;
+}
+
+.index_header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.index_header form input {
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    box-sizing: border-box;
+}
+
+.index_header form button {
+    background-color: black;
+    color: white;
+    padding: 8px 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .employee_table {

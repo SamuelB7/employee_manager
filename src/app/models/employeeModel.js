@@ -53,6 +53,17 @@ module.exports = {
         }
     },
 
+    findBy(filter) {
+        try {
+            return db.query(`
+            SELECT * FROM employee
+            WHERE employee.name ILIKE '%${filter}%'
+        `)
+        } catch (error) {
+            console.error(error);
+        }
+    },
+
     update(data) {
         try {
             const query = `

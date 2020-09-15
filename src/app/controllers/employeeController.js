@@ -121,12 +121,18 @@ module.exports = {
 
     async index(req, res) {
         try {
-            let results = await Employee.findAll()
-            employees = results.rows
+            const {filter} = req.query
 
-            
-
-            return res.render('index', {employees})
+            if(filter) {
+                let results = await Employee.findBy(filter)
+                employees = results.rows
+                
+                return res.render('index', {employees})
+            } else {
+                let results = await Employee.findAll()
+                employees = results.rows
+                return res.render('index', {employees})
+            }
         } catch (error) {
             console.error(error);
         }

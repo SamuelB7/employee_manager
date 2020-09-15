@@ -4,6 +4,15 @@
 
 <div class="index_header">
     <a href="/create" class="create_button">Novo Funcionário</a>
+    <form action="/" method='GET'>
+            <input 
+            type="text" 
+            name="filter"
+            placeholder='Nome do funcionário'
+            value={{filter}}
+            >
+            <button type="submit">Pesquisar</button>
+    </form>
 </div>
 
 <table class="employee_table">
