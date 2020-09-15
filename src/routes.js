@@ -5,9 +5,7 @@ const multer = require('./app/middlewares/multer')
 const employee = require('./app/controllers/employeeController')
 
 
-routes.get('/', function(req, res){
-    res.render('index')
-})
+routes.get('/', employee.index)
 
 routes.get('/create', employee.create)
 routes.get('/employee/:id', employee.show) 

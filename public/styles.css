@@ -10,6 +10,7 @@ header {
     border: solid black;
     border-radius: 10px;
     margin: 0 70px;
+    margin-bottom: 20px;
     padding: 30px;
     width: auto;
     height: 100%;
@@ -190,6 +191,37 @@ button {
     font-weight: bold;
 }
 
+.create_button {
+    padding: 8px 32px;
+    background-color: black;
+    border-radius: 4px;
+    margin: 20px 70px;
+    width: 100%;
+    font-size: 16px;
+    color: white;
+}
+
+.employee_table {
+    margin: 10px 70px;
+    margin-left: 25%;
+}
+
+.employee_table thead {
+    font-size: large;
+    text-align: left;
+}
+
+.employee_table thead tr th,
+.employee_table tbody tr td{
+    padding: 10px 20px;
+}
+
+.employee_table tbody tr td a {
+    color: white;
+    background: black;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
 
 
 

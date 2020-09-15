@@ -2,6 +2,52 @@
 
 {%block content%}
 
+<div class="index_header">
+    <a href="/create" class="create_button">Novo Funcionário</a>
+</div>
 
+<table class="employee_table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Id</th>
+            <th>Cargo</th>
+            <th>Setor</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{employee.name}}</td>
+
+            <td>{{employee.id}}</td>
+
+            <td>
+                {% if employee.position_id == 1 %} Presidente {%endif%}
+                {% if employee.position_id == 2 %} Diretor {%endif%}
+                {% if employee.position_id == 3 %} Gerente {%endif%}
+                {% if employee.position_id == 4 %} Lider {%endif%}
+                {% if employee.position_id == 5 %} Analista Sr. {%endif%}
+                {% if employee.position_id == 6 %} Analista Pl. {%endif%}
+                {% if employee.position_id == 7 %} Analista Jr. {%endif%}
+                {% if employee.position_id == 8 %} Estagiário {%endif%}
+                {% if employee.position_id == 9 %} Aprendiz {%endif%}
+            </td>
+
+            <td>
+                {% if employee.sector_id == 1 %} Financeiro {%endif%} 
+                {% if employee.sector_id == 2 %} Recursos Humanos {%endif%}
+                {% if employee.sector_id == 3 %} Vendas {%endif%} 
+                {% if employee.sector_id == 4 %} Tecnologia da Informação {%endif%}
+            </td>
+
+            <td><a href="/employee/{{employee.id}}">VER DETALHES</a></td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
 
 {%endblock%}

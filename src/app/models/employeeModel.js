@@ -39,7 +39,7 @@ module.exports = {
 
     findAll() {
         try {
-            return db.query(`SELECT * FROM employee`)
+            return db.query(`SELECT * FROM employee ORDER BY id`)
         } catch (error) {
             console.error(error);
         }

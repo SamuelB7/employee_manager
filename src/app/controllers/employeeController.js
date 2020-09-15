@@ -117,5 +117,18 @@ module.exports = {
         } catch (error) {
             console.error(error);
         }
+    },
+
+    async index(req, res) {
+        try {
+            let results = await Employee.findAll()
+            employees = results.rows
+
+            
+
+            return res.render('index', {employees})
+        } catch (error) {
+            console.error(error);
+        }
     }
 }

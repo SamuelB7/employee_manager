@@ -31,4 +31,4 @@ CREATE TABLE "photos" (
   "employee_id" int
   );
   
-ALTER TABLE "photos" ADD FOREIGN KEY ("employee_id") REFERENCES "employee" ("id");
+ALTER TABLE "photos" ADD FOREIGN KEY ("employee_id") REFERENCES "employee" ("id") ON DELETE CASCADE ;
