@@ -144,12 +144,12 @@ form .field #photos-input {
 }
 
 h3 {
-    margin: 10px 70px; 
+    text-align: center;
 }
 
 .show {
     background: darkgray;
-    margin: 10px 70px;
+    margin: 10px 300px;
 
     text-align: center;
 
@@ -157,7 +157,7 @@ h3 {
     border: solid black;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr ;
 }
 
 .show a {
@@ -175,9 +175,14 @@ h3 {
 }
 
 .details img {
-    width: 100px;
-    height: 100px;
+    max-width: 200px;
+    max-height: 200px;
+    
+    width: auto;
+    height: auto;
+
     border: solid 1px black;
+    border-radius: 5px;
     
 }
 
